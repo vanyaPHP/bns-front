@@ -36,6 +36,12 @@ yarn-error.log*
 # vercel
 .vercel
 
+# example of application ui/ux
+example-images/
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# JSON "database" (auto-seeded on first request)
+/data/
