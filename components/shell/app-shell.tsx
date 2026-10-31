@@ -1,12 +1,12 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ChevronDown,
   ChevronUp,
-  Droplet,
   LogOut,
   Moon,
   PanelLeft,
@@ -34,9 +34,7 @@ function useOutsideClick(ref: React.RefObject<HTMLElement | null>, onOutside: ()
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2 text-fg">
-      <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-sky-500 to-blue-700 text-white shadow-sm">
-        <Droplet className="h-[18px] w-[18px]" fill="currentColor" />
-      </span>
+      <Image src="/belorusneft-emblem.png" alt="Белоруснефть" width={32} height={32} className="h-8 w-8" priority />
       <span className="leading-none">
         <span className="block text-[19px] font-extrabold tracking-tight">белоруснефть</span>
         <span className="block text-[9px] font-semibold uppercase tracking-[0.18em] text-fg-subtle">корп. портал</span>

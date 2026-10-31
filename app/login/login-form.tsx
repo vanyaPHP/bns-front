@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
-import { Droplet, KeyRound, LogIn, UserRound } from "lucide-react";
+import { KeyRound, LogIn, UserRound } from "lucide-react";
 import { apiFetch } from "@/lib/api-client";
 import { Button, Field, Input } from "@/components/ui";
 
@@ -42,9 +43,7 @@ export function LoginForm({ next }: { next: string }) {
         <div className="absolute inset-0 opacity-[0.07] [background-image:linear-gradient(white_1px,transparent_1px),linear-gradient(90deg,white_1px,transparent_1px)] [background-size:44px_44px]" />
         <div className="relative flex h-full flex-col justify-between p-12 text-white">
           <div className="flex items-center gap-3">
-            <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-sky-400 to-blue-700 shadow-lg">
-              <Droplet className="h-6 w-6" fill="currentColor" />
-            </span>
+            <Image src="/belorusneft-emblem.png" alt="Белоруснефть" width={44} height={44} className="h-11 w-11 drop-shadow-lg" priority />
             <div>
               <div className="text-2xl font-extrabold tracking-tight">белоруснефть</div>
               <div className="text-[11px] uppercase tracking-[0.2em] text-white/60">корпоративный портал</div>
@@ -74,7 +73,8 @@ export function LoginForm({ next }: { next: string }) {
 
       <div className="flex items-center justify-center bg-bg p-6">
         <div className="w-full max-w-md">
-          <div className="mb-8 lg:hidden">
+          <div className="mb-8 flex items-center gap-3 lg:hidden">
+            <Image src="/belorusneft-emblem.png" alt="" width={40} height={40} className="h-10 w-10" />
             <div className="text-2xl font-extrabold tracking-tight text-fg">белоруснефть</div>
           </div>
           <h2 className="text-[28px] font-bold text-fg">Вход в систему</h2>

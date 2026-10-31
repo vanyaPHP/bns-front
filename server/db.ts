@@ -49,7 +49,9 @@ export const TABLE_NAMES: TableName[] = [
   "leave_requests",
 ];
 
-export const DATA_DIR = process.env.BNS_DATA_DIR ?? path.join(process.cwd(), "data");
+// Serverless deployments (Vercel) have a read-only filesystem except /tmp.
+export const DATA_DIR =
+  process.env.BNS_DATA_DIR ?? (process.env.VERCEL ? "/tmp/bns-data" : path.join(process.cwd(), "data"));
 export const UPLOADS_DIR = path.join(DATA_DIR, "uploads");
 
 // Survive dev-server hot reloads so locks and the seeding promise stay singletons.
