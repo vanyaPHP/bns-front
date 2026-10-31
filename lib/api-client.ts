@@ -11,11 +11,18 @@ export class ApiError extends Error {
   }
 }
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ?? "";
+
+function resolveApiUrl(url: string) {
+  if (!API_BASE_URL || /^https?:\/\//.test(url)) return url;
+  return `${API_BASE_URL}${url.startsWith("/") ? url : `/${url}`}`;
+}
+
 export async function apiFetch<T = unknown>(
   url: string,
   options: { method?: string; body?: unknown; formData?: FormData } = {},
 ): Promise<T> {
-  const res = await fetch(url, {
+  const res = await fetch(resolveApiUrl(url), {
     method: options.method ?? (options.body || options.formData ? "POST" : "GET"),
     headers: options.body !== undefined ? { "Content-Type": "application/json" } : undefined,
     body: options.formData ?? (options.body !== undefined ? JSON.stringify(options.body) : undefined),
